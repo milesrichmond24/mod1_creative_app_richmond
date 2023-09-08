@@ -8,8 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    let ball: Int;
+    
+    // Label because it looks cool
+    @IBOutlet weak var description_output_outlet: UILabel!
+    
+    // User provided info
+    @IBOutlet weak var base_output_outlet: UITextField!
+    @IBOutlet weak var input_outlet: UITextField!
+    
+    @IBOutlet weak var output_outlet: UILabel!
+    
+    
+    let base_values: [String] = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +27,39 @@ class ViewController: UIViewController {
     }
 
 
-    func convert() {
-        return x;
+    func convert(num: String, base: Int) -> String {
+        if(num == "0") {
+            return "";
+        }
+        
+        var num2: Int = 0;
+        
+        if(num != "") {
+            if(Int(num) == nil) {
+                num2 = Int(num)!;
+            }
+        }
+        
+        
+        return "\(convert(num: String((num2 - (num2 % base)) / base), base: base) + base_values[num2 % base]) asdfa"
     }
+    
+    
+    @IBAction func convert_action(_ sender: UIButton) {
+        let input = input_outlet.text ?? "";
+        
+        
+        if(Int(base_output_outlet.text!) == nil) {
+            base = Int(base_output_outlet.text)!;
+        }
+        
+        let base = Int(base_output_outlet.text!);
+        
+        output_outlet.text = convert(num: input, base: base)
+        
+    }
+    
+    
     
 }
 
