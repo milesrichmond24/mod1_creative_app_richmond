@@ -110,7 +110,6 @@
                     </view>
                     <connections>
                         <outlet property="base_output_outlet" destination="ftV-xa-whR" id="AWn-IV-AuK"/>
-                        <outlet property="description_input_outlet" destination="gp4-N1-fsa" id="j4f-Ry-Nr7"/>
                         <outlet property="description_output_outlet" destination="AP0-OA-W6M" id="Pzh-zL-HHZ"/>
                         <outlet property="input_outlet" destination="vfP-l0-mnK" id="Za4-fs-mF5"/>
                         <outlet property="output_outlet" destination="IS1-oj-skR" id="hQt-XK-2EF"/>

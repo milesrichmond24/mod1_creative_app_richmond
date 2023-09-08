@@ -28,6 +28,10 @@ class ViewController: UIViewController {
 
 
     func convert(num: String, base: Int) -> String {
+        if(base > 16 || base < 2) {
+            return "invalid input";
+        }
+        
         if(num == "0") {
             return "";
         }
@@ -36,26 +40,30 @@ class ViewController: UIViewController {
         
         if(num != "") {
             if(Int(num) == nil) {
-                num2 = Int(num)!;
+                return "";
             }
+            num2 = Int(num)!;
         }
         
         
-        return "\(convert(num: String((num2 - (num2 % base)) / base), base: base) + base_values[num2 % base]) asdfa"
+        return "\(convert(num: String((num2 - (num2 % base)) / base), base: base) + base_values[num2 % base])"
     }
     
     
     @IBAction func convert_action(_ sender: UIButton) {
         let input = input_outlet.text ?? "";
         
+        var base: Int = 0;
+        
         
         if(Int(base_output_outlet.text!) == nil) {
-            base = Int(base_output_outlet.text)!;
+            return;
         }
-        
-        let base = Int(base_output_outlet.text!);
+        base = Int(base_output_outlet.text!)!;
         
         output_outlet.text = convert(num: input, base: base)
+        
+        description_output_outlet.text = String(base);
         
     }
     
